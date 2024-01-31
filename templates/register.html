@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            background-size: cover;
+            background-position: center;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: #292626;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #4caf50;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>REGISTER NOW</h1>
+    <form action = "{% url 'register' %}" method = "post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter your username"><br>
+        <input type="text" name="first_name" placeholder="Enter your first name"><br>
+        <input type="text" name="last_name" placeholder="Enter your last name"><br>
+        <input type="email" name="email" placeholder="Enter your email"><br>
+        <input type="password" name="password" placeholder="Enter your password"><br>
+        <input type="password" name="password1" placeholder="confirm your password"><br>
+        <input type="submit">
+        
+
+    </form>
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+</body>
+</html>
